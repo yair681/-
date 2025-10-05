@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>קבע שיחת ייעוץ - דף נחיתה מקצועי</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 קבע שיחת ייעוץ לדף הנחיתה שלך</h1>
+            <p class="subtitle">נבנה ביחד דף נחיתה ממיר שיביא לך לקוחות חדשים</p>
+        </header>
+
+        <div class="booking-form">
+            <div class="form-section">
+                <h2>📅 בחר תאריך ושעה</h2>
+                <div class="date-selection">
+                    <label for="datePicker">תאריך:</label>
+                    <input type="date" id="datePicker" min="">
+                    <div id="dateError" class="error-message"></div>
+                </div>
+
+                <div class="time-selection">
+                    <label>שעה פנויה:</label>
+                    <div id="timeSlots" class="time-slots">
+                        <!-- שעות פנויות יוטענו כאן -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>👤 פרטים אישיים</h2>
+                <div class="input-group">
+                    <label for="name">שם מלא:</label>
+                    <input type="text" id="name" placeholder="הכנס את שמך">
+                </div>
+                <div class="input-group">
+                    <label for="email">אימייל:</label>
+                    <input type="email" id="email" placeholder="your@email.com">
+                </div>
+                <div class="input-group">
+                    <label for="phone">טלפון (אופציונלי):</label>
+                    <input type="tel" id="phone" placeholder="05x-xxx-xxxx">
+                </div>
+            </div>
+
+            <button id="submitBtn" class="submit-btn">✅ קבע שיחה עכשיו</button>
+            <div id="successMessage" class="success-message"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
