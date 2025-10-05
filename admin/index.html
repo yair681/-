@@ -10,7 +10,25 @@
 <body>
     <div class="admin-container">
         <header class="admin-header">
-            <h1>📊 לוח בקרה - ניהול תורים</h1>
+            <div class="header-top">
+                <h1>📊 לוח בקרה</h1>
+                <div class="notifications-badge" onclick="admin.toggleNotifications()">
+                    <span class="bell-icon">🔔</span>
+                    <span class="badge-count" id="notificationCount">0</span>
+                </div>
+            </div>
+
+            <!-- פאנל התראות -->
+            <div class="notifications-panel" id="notificationsPanel">
+                <div class="notifications-header">
+                    <h3>📅 פגישות קרובות</h3>
+                    <button class="close-notifications" onclick="admin.toggleNotifications()">✕</button>
+                </div>
+                <div class="notifications-list" id="notificationsList">
+                    <div class="loading">טוען...</div>
+                </div>
+            </div>
+
             <div class="admin-stats">
                 <div class="stat-card">
                     <h3>סה"כ תורים</h3>
@@ -29,37 +47,61 @@
 
         <div class="admin-content">
             <div class="tabs">
-                <button class="tab-button active" onclick="openTab('appointments')">📅 כל התורים</button>
-                <button class="tab-button" onclick="openTab('availability')">⏰ ניהול זמינות</button>
+                <button class="tab-button active" onclick="openTab('availability')">⏰ זמינות</button>
+                <button class="tab-button" onclick="openTab('appointments')">📅 תורים</button>
             </div>
 
-            <div id="appointments" class="tab-content active">
+            <!-- טאב ניהול זמינות -->
+            <div id="availability" class="tab-content active">
+                <div class="availability-section">
+                    <div class="quick-setup">
+                        <h3>🚀 הוספה מהירה</h3>
+                        <div class="quick-setup-form">
+                            <div class="form-group">
+                                <label>תאריך:</label>
+                                <input type="date" id="quickDate" min="">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>שעות (בחר כמה שרוצה):</label>
+                                <div class="time-picker-grid" id="timePicker">
+                                    <!-- שעות יוצרו דינמית -->
+                                </div>
+                            </div>
+
+                            <button class="btn-primary" onclick="admin.addQuickAvailability()">
+                                ➕ הוסף זמינות
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="current-availability">
+                        <h3>📋 זמינות קיימת</h3>
+                        <div id="currentAvailabilityList">
+                            <div class="loading">טוען...</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="availabilityMessage" class="message"></div>
+            </div>
+
+            <!-- טאב תורים -->
+            <div id="appointments" class="tab-content">
                 <div class="filters">
-                    <input type="text" id="searchInput" placeholder="חפש לפי שם או אימייל...">
+                    <input type="text" id="searchInput" placeholder="חפש...">
                     <select id="statusFilter">
-                        <option value="all">כל הסטטוסים</option>
+                        <option value="all">הכל</option>
                         <option value="confirmed">מאושרים</option>
                         <option value="cancelled">מבוטלים</option>
                     </select>
+                    <button onclick="admin.loadAppointments()" class="btn-refresh">🔄</button>
                 </div>
 
                 <div class="appointments-list">
                     <div id="appointmentsContainer">
-                        <!-- התורים יוטענו כאן -->
+                        <div class="loading">טוען...</div>
                     </div>
                 </div>
-            </div>
-
-            <div id="availability" class="tab-content">
-                <div class="availability-form">
-                    <h3>הגדר זמינות חדשה</h3>
-                    <div class="form-row">
-                        <input type="date" id="availDate" min="">
-                        <input type="text" id="availSlots" placeholder="שעות פנויות (מופרדות בפסיק): 09:00,10:00,11:00">
-                        <button onclick="admin.setAvailability()">💾 שמור זמינות</button>
-                    </div>
-                </div>
-                <div id="availabilityMessage" class="message"></div>
             </div>
         </div>
     </div>
