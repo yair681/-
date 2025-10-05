@@ -32,7 +32,20 @@ app.get('/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// קבלת שעות פנויות
+// קבלת כל הזמינות
+app.get('/api/admin/availability', (req, res) => {
+    try {
+        res.json({
+            availability: availability,
+            timestamp: new Date().toISOString()
+        });
+    } catch (error) {
+        console.error('Error getting all availability:', error);
+        res.status(500).json({ error: 'שגיאה בקבלת הנתונים' });
+    }
+});
+
+// קבלת שעות פנויות לתאריך ספציפי
 app.get('/api/availability', (req, res) => {
     try {
         const { date } = req.query;
