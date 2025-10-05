@@ -16,18 +16,9 @@
 
         <div class="booking-form">
             <div class="form-section">
-                <h2>📅 בחר תאריך ושעה</h2>
-                <div class="date-selection">
-                    <label for="datePicker">תאריך:</label>
-                    <input type="date" id="datePicker" min="">
-                    <div id="dateError" class="error-message"></div>
-                </div>
-
-                <div class="time-selection">
-                    <label>שעה פנויה:</label>
-                    <div id="timeSlots" class="time-slots">
-                        <!-- שעות פנויות יוטענו כאן -->
-                    </div>
+                <h2>📅 בחר תאריך ושעה פנויים</h2>
+                <div id="availableSlots" class="available-slots">
+                    <div class="loading">טוען זמנים פנויים...</div>
                 </div>
             </div>
 
@@ -48,6 +39,7 @@
             </div>
 
             <button id="submitBtn" class="submit-btn">✅ קבע שיחה עכשיו</button>
+            <div id="errorMessage" class="error-message"></div>
             <div id="successMessage" class="success-message"></div>
         </div>
     </div>
